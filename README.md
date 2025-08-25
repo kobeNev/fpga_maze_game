@@ -19,7 +19,7 @@ De speeltijd wordt bijgehouden en weergegeven op de **7-segment displays**.
 ---
 
 ## 🖼️ Systeemoverzicht
-![Schema](docs/schema.png)  
+![Schema](Picture1.png)  
 *(RTL block design met top-level en submodules)*
 
 ---
