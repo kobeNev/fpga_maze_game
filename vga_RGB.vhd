@@ -105,16 +105,12 @@ architecture Behavioral of vga_RGB is
 
 begin
     
-    ----------------------------------------------------------------
-    -- 1) Aanvraag (request) van positie uit switches (tiles)
-    ----------------------------------------------------------------
+    -- 1) Aanvraag van positie uit switches (tiles)
     req_row <= clamp(to_integer(unsigned(sw(10 downto 6))), 0, 31);
     req_col <= clamp(to_integer(unsigned(sw(5 downto 0))), 0, 48);
 
     
-    ----------------------------------------------------------------
     -- 2) Collision gating op klok: alleen updaten als doel geen muur is
-    ----------------------------------------------------------------
     process(clk, rst)
         variable dr, dc : integer;             -- -1, 0, +1
         variable cand_r : integer;
@@ -163,15 +159,11 @@ begin
     at_start <= '1' when (player_row = 1 and player_col = 1) else '0';
     at_goal  <= '1' when (player_row = 29 and player_col = 37) else '0';
 
-    ----------------------------------------------------------------
     -- 3) Pixelpositie van sprite (actieve gebied): tile * 16 (+ kleine Y offset)
-    ----------------------------------------------------------------
     C1_draw <= std_logic_vector( to_unsigned(player_col, 10) sll 4 );                 -- *16
     R1_draw <= std_logic_vector( (to_unsigned(player_row, 10) sll 4) + to_unsigned(0,10) );
 
-    ----------------------------------------------------------------
     -- 4) Sprite-vensters (numeric_std)
-    ----------------------------------------------------------------
     spriteon1 <= '1' when
         ( unsigned(hc) >= unsigned(C1_draw) + unsigned(hbp) and
           unsigned(hc) <  unsigned(C1_draw) + unsigned(hbp) + to_unsigned(w, 10) and
@@ -179,9 +171,7 @@ begin
           unsigned(vc) <  unsigned(R1_draw) + unsigned(vbp) + to_unsigned(h, 10) )
     else '0';
 
-    ----------------------------------------------------------------
     -- 5) Tekenlogica: sprites > anders maze-achtergrond
-    ----------------------------------------------------------------
     process(hc, vc, vidon, spriteon1, M, R1_draw, C1_draw)
         variable j     : integer;
         variable act_h : unsigned(9 downto 0);

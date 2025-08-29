@@ -1,9 +1,5 @@
-----------------------------------------------------------------------------------
--- top_VGA_PS2_demo (aangepast)
-----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
--- use IEEE.NUMERIC_STD.ALL; -- niet vereist in dit bestand
 
 entity top_VGA_PS2_demo is
     Port ( clk_100MHz : in  STD_LOGIC;
@@ -120,9 +116,8 @@ architecture Behavioral of top_VGA_PS2_demo is
   -- bus naar vga_RGB
   signal sw       : std_logic_vector(18 downto 0);
 begin
-  ----------------------------------------------------------------
+
   -- Clockgen 100MHz -> 25MHz
-  ----------------------------------------------------------------
   U1 : clk_25MHz
     port map (
       clk_out1 => clk_25,
@@ -131,9 +126,7 @@ begin
       clk_in1  => clk_100MHz
     );
 
-  ----------------------------------------------------------------
   -- VGA timing @ 25MHz
-  ----------------------------------------------------------------
   U2: vga_sync 
     port map(
       clk   => clk_25,
@@ -145,9 +138,7 @@ begin
       vidon => vidon
     ); 
 
-  ----------------------------------------------------------------
   -- PS/2 keyboard (laat op 100MHz of zet ook op 25MHz; hier 100MHz)
-  ----------------------------------------------------------------
   U5: top_PS2_CR
     port map (
       clk  => clk_100MHz,
@@ -176,9 +167,7 @@ begin
 
   sw <= sw_sync2;
 
-  ----------------------------------------------------------------
   -- Sprite ROM (clock op 25MHz zodat addra/douta in hetzelfde domein zitten)
-  ----------------------------------------------------------------
   U4 : blk_mem_sprites
     port map (
       clka  => clk_25,   -- AANPASSING: was clk_100MHz
@@ -186,9 +175,7 @@ begin
       douta => douta
     );
 
-  ----------------------------------------------------------------
   -- VGA renderer + collision @ 25MHz
-  ----------------------------------------------------------------
   U3: vga_RGB 
     port map (
       clk       => clk_25,   -- NIEUW
@@ -205,9 +192,7 @@ begin
       at_goal => at_goal
     );
     
-  ----------------------------------------------------------------
   -- Timer voor bijhouden speeltijd doolhof
-  ----------------------------------------------------------------
   U6: timer_mmss
     port map (
         clk  => clk_25,
@@ -217,9 +202,7 @@ begin
         seconds => timer_seconds
     );
     
-  ----------------------------------------------------------------
   -- 7-segment driver
-  ----------------------------------------------------------------
   U7: seg_driver_mmss
     port map (
         clk     => clk_100MHz,

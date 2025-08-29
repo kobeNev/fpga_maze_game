@@ -32,9 +32,7 @@ architecture Behavioral of VGA_tb is
     signal vgaGreen   : STD_LOGIC_VECTOR (3 downto 0);
     signal vgaRed     : STD_LOGIC_VECTOR (3 downto 0);
 
-    ----------------------------------------------------------------
     -- PS/2 transmit helper
-    ----------------------------------------------------------------
     procedure send_ps2_code(
         signal ps2c : out std_logic;
         signal ps2d : out std_logic;
