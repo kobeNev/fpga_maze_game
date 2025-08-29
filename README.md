@@ -30,10 +30,10 @@ De speeltijd wordt bijgehouden en weergegeven op de **7-segment displays**.
 - **[`top_PS2_CR`](https://github.com/kobeNev/fpga_maze_game/blob/main/top_PS2_CR.vhd)** – Keyboardcontroller, wrapper rond:  
   - [`PS2`](https://github.com/kobeNev/fpga_maze_game/blob/main/PS2.vhd) → decodeert toetsenbordscancodes.  
   - [`PS2_CR`](https://github.com/kobeNev/fpga_maze_game/blob/main/PS2_CR.vhd) → vertaalt scancodes naar coördinaten (rij/kolom).  
-- **[`blk_mem_sprites`](https://github.com/kobeNev/fpga_maze_game/blob/main/ROM_sprites.coe)** – BRAM met doolhofstructuur.  
+- **[`blk_mem_sprites`](https://github.com/kobeNev/fpga_maze_game/blob/main/ROM_sprites.coe)** – BRAM met spelerstructuur.  
 - **[`timer_mmss`](https://github.com/kobeNev/fpga_maze_game/blob/main/timer_mmss.vhd)** – Timer voor speeltijd (mm:ss).  
 - **[`seg_driver_mmss`](https://github.com/kobeNev/fpga_maze_game/blob/main/seg_driver_mmss.vhd)** – 7-segment driver voor weergave tijd.  
-- **[`clk_25MHz`](https://github.com/kobeNev/fpga_maze_game/blob/main/clk_25MHz.vhd)** – Clock divider van 100 MHz → 25 MHz.
+- **`clk_25MHz`** – Clock divider van 100 MHz → 25 MHz.
 
 ---
 
