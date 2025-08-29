@@ -37,9 +37,7 @@ entity top_PS2_CR is
            ps2c : in STD_LOGIC;
            ps2d : in STD_LOGIC;
            C1 : out STD_LOGIC_VECTOR (5 downto 0);
-           C2 : out STD_LOGIC_VECTOR (3 downto 0);
-           R1 : out STD_LOGIC_VECTOR (4 downto 0);
-           R2 : out STD_LOGIC_VECTOR (3 downto 0));
+           R1 : out STD_LOGIC_VECTOR (4 downto 0));
 end top_PS2_CR;
 
 architecture Behavioral of top_PS2_CR is

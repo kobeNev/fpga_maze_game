@@ -70,7 +70,6 @@ process (clk, rst) begin
                                     C1_int <= C1_int; 
                                     flag <= '0' ; 
                     when X"F0" =>   R1_int <= R1_int;  --release code
-
                                     C1_int <= C1_int;  
                                     flag <= '1' ;       --set flag at release button 
                     when others =>  R1_int <= R1_int;   

@@ -83,9 +83,7 @@ architecture Behavioral of VGA_tb is
     end procedure;
 
 begin
-    ----------------------------------------------------------------
     -- UUT instance
-    ----------------------------------------------------------------
     UUT: top_VGA_PS2_demo
         port map (
             clk_100MHz => clk_100MHz,
@@ -99,9 +97,7 @@ begin
             vgaRed     => vgaRed
         );
 
-    ----------------------------------------------------------------
     -- 100 MHz clock
-    ----------------------------------------------------------------
     clk_process : process
     begin
         while true loop
@@ -112,9 +108,7 @@ begin
         end loop;
     end process;
 
-    ----------------------------------------------------------------
     -- Stimuli
-    ----------------------------------------------------------------
     stim_process : process
     begin
         -- Reset
@@ -124,14 +118,12 @@ begin
 
         wait for 20 us;
 
-        ----------------------------------------------------------------
         -- Test een aantal bewegingen (player 1 met WASD/arrow codes)
         -- Scan codes (set 2):
         -- 1D = W / UP
         -- 1C = A / LEFT
         -- 1B = S / DOWN
         -- 23 = D / RIGHT   (afhankelijk van je PS2-mapper!)
-        ----------------------------------------------------------------
         
         -- Onder
         report "Press DOWN";
@@ -156,9 +148,7 @@ begin
         press_and_release(ps2c, ps2d, X"1B");
         wait for 10 us;
 
-        ----------------------------------------------------------------
         -- Eindig simulatie
-        ----------------------------------------------------------------
         wait for 10 us;
         report "Simulation finished." severity note;
         wait;
