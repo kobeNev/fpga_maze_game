@@ -1,7 +1,7 @@
 # 🎮 FPGA Maze Game – Basys3 (Artix-7)
 
 Dit project implementeert een **2D doolhofspel** op een **Basys3 FPGA board** met **VGA-uitgang** en **PS/2 toetsenbord**.  
-De speler bestuurt een avatar door het doolhof met de pijltjestoetsen en moet het eindpunt bereiken.  
+De speler bestuurt een avatar door het doolhof met de ZQSD-toetsen en moet het eindpunt bereiken.  
 De speeltijd wordt bijgehouden en weergegeven op de **7-segment displays**.
 
 ---
@@ -9,7 +9,7 @@ De speeltijd wordt bijgehouden en weergegeven op de **7-segment displays**.
 ## 📋 Features
 - VGA-output **640×480 @ 60 Hz** (25 MHz pixelclock).  
 - Hardgecodeerd doolhof in **Block RAM**.  
-- Besturing via **PS/2 keyboard** (← ↑ → ↓).  
+- Besturing via **PS/2 keyboard** (ZQSD).  
 - Collision-detectie met muren.  
 - Duidelijk **startpunt (groen)** en **eindpunt (rood)**.  
 - Resetfunctie via drukknop.  
@@ -25,7 +25,7 @@ De speeltijd wordt bijgehouden en weergegeven op de **7-segment displays**.
 ---
 
 ## 🧩 Modules
-- **`vga_RGB`** – Renderer: tekent doolhof en avatar, collision & doel-detectie.  
+- **[`vga_RGB`](https://github.com/kobeNev/fpga_maze_game/blob/main/vga_RGB.vhd)** – Renderer: tekent doolhof en avatar, collision & doel-detectie.  
 - **`vga_sync`** – VGA-timinggenerator (hsync, vsync, pixel-coördinaten).  
 - **`top_PS2_CR`** – Keyboardcontroller, wrapper rond:  
   - `PS2` → decodeert toetsenbordscancodes.  
