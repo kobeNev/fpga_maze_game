@@ -8,7 +8,7 @@ De speeltijd wordt bijgehouden en weergegeven op de **7-segment displays**.
 
 ## 📋 Features
 - VGA-output **640×480 @ 60 Hz** (25 MHz pixelclock).  
-- Hardgecodeerd doolhof in **Block RAM**.  
+- Hardgecodeerd doolhof in **vga_RGB**.  
 - Besturing via **PS/2 keyboard** (ZQSD).  
 - Collision-detectie met muren.  
 - Duidelijk **startpunt (groen)** en **eindpunt (rood)**.  
@@ -26,14 +26,14 @@ De speeltijd wordt bijgehouden en weergegeven op de **7-segment displays**.
 
 ## 🧩 Modules
 - **[`vga_RGB`](https://github.com/kobeNev/fpga_maze_game/blob/main/vga_RGB.vhd)** – Renderer: tekent doolhof en avatar, collision & doel-detectie.  
-- **`vga_sync`** – VGA-timinggenerator (hsync, vsync, pixel-coördinaten).  
-- **`top_PS2_CR`** – Keyboardcontroller, wrapper rond:  
-  - `PS2` → decodeert toetsenbordscancodes.  
-  - `PS2_CR` → vertaalt scancodes naar coördinaten (rij/kolom).  
-- **`blk_mem_sprites`** – BRAM met doolhofstructuur.  
-- **`timer_mmss`** – Timer voor speeltijd (mm:ss).  
-- **`seg_driver_mmss`** – 7-segment driver voor weergave tijd.  
-- **`clk_25MHz`** – Clock divider van 100 MHz → 25 MHz.
+- **[`vga_sync`](https://github.com/kobeNev/fpga_maze_game/blob/main/vga_sync.vhd)** – VGA-timinggenerator (hsync, vsync, pixel-coördinaten).  
+- **[`top_PS2_CR`](https://github.com/kobeNev/fpga_maze_game/blob/main/top_PS2_CR.vhd)** – Keyboardcontroller, wrapper rond:  
+  - [`PS2`](https://github.com/kobeNev/fpga_maze_game/blob/main/PS2.vhd) → decodeert toetsenbordscancodes.  
+  - [`PS2_CR`](https://github.com/kobeNev/fpga_maze_game/blob/main/PS2_CR.vhd) → vertaalt scancodes naar coördinaten (rij/kolom).  
+- **[`blk_mem_sprites`](https://github.com/kobeNev/fpga_maze_game/blob/main/ROM_sprites.coe)** – BRAM met doolhofstructuur.  
+- **[`timer_mmss`](https://github.com/kobeNev/fpga_maze_game/blob/main/timer_mmss.vhd)** – Timer voor speeltijd (mm:ss).  
+- **[`seg_driver_mmss`](https://github.com/kobeNev/fpga_maze_game/blob/main/seg_driver_mmss.vhd)** – 7-segment driver voor weergave tijd.  
+- **[`clk_25MHz`](https://github.com/kobeNev/fpga_maze_game/blob/main/clk_25MHz.vhd)** – Clock divider van 100 MHz → 25 MHz.
 
 ---
 
